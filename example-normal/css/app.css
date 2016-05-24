@@ -1,0 +1,24 @@
+body, html, div, span, header, button, a{
+	margin:0;
+	padding:0;
+}
+body,html{
+	height:100%;
+}
+.app{
+	width:100%;
+	height:100%;
+	background:#fff url(../img/app.jpg) no-repeat 0 0;
+	background-size:100% 100%;
+	text-align:center;
+}
+.btn{
+	border:none;
+	padding:20px 100px;
+	font: 14px/100%;
+	color:#fff;
+	text-align:center;
+	margin:30% auto 0;
+	background:red;
+	box-shadow:3px 3px 2px #000;
+}
