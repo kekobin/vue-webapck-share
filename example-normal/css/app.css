@@ -1,6 +1,7 @@
-body, html, div, span, header, button, a{
+body, html, div, span, header, button, a, section, h1,h2,h3,h4,h5,h6{
 	margin:0;
 	padding:0;
+	border:none;
 }
 body,html{
 	height:100%;
@@ -15,10 +16,94 @@ body,html{
 .btn{
 	border:none;
 	padding:20px 100px;
-	font: 14px/100%;
+	font-size:20px;
 	color:#fff;
 	text-align:center;
 	margin:30% auto 0;
 	background:red;
 	box-shadow:3px 3px 2px #000;
+	border-radius: 8px;
+}
+.dialog{
+	position:absolute;
+	left:50%;
+	top:40%;
+	margin-left:-250px;
+	width:500px;
+	border-radius: 10px;
+	box-shadow:0px 2px 2px #f2f2f2;
+	background:#444;
+	visibility:hidden;	
+
+	-webkit-transition:all .2s ease-in-out;
+	transition:all .2s ease-in-out;
+}
+.show.dialog{
+	visibility:visible;
+	-webkit-animation: slide-from-top .4s ease-in;
+	animation: slide-from-top .4s ease-in;
+}
+.show.dialog ~ .app{
+	-webkit-perspective: 600px;
+	perspective: 600px;
+	-webkit-filter:blur(3px);
+	filter:blur(3px);
+
+	-webkit-transform: translate3d(0, 0, -85px);
+          transform: translate3d(0, 0, -85px);
+}
+.dialog .dialog-hd{
+	height: 50px;
+	line-height:50px;
+}
+.dialog .dialog-hd h3{
+	text-align:left;
+	padding-left:15px;
+	color:#fff;
+}
+.dialog .dialog-bd{
+	min-height:300px;
+	background:#fff;
+	padding:10px;
+	text-align:center;
+}
+.v-center{
+	padding-top:100px;
+}
+.mask{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,.4);
+	visibility:hidden;
+}
+.show.mask{
+	visibility:visible;
+}
+.close{
+	border:none;
+	padding:15px 40px;
+	font-size:20px;
+	color:#fff;
+	text-align:center;
+	margin:15% auto 0;
+	background:#ccc;
+	border-radius: 8px;
+}
+
+@-webkit-keyframes slide-from-top{
+	0% {
+		-webkit-transform: scale(.1);
+		transform: scale(.1);
+	}
+	70%{
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	}
+	100%{
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
 }
