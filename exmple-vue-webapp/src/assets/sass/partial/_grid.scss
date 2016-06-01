@@ -1,0 +1,174 @@
+@charset "utf-8";
+//
+// $Author: linzhiqiang $
+// $Date: 2013-11-15 14:45:31 +0800 (周五, 2013-11-15) $
+//
+// 主变量:
+// 使用下划线避免重名意外发生
+$_columns: 24 !default;      // 总列数
+$_column-width: 30px !default;   // 单列的宽度
+$_gutter: 10px !default;     // 列间距的宽度
+
+// 总宽度:
+$_width: $_columns * ($_column-width + $_gutter);
+
+// 一个函数来计算宽度:
+// 示例: (默认值)
+// get_width(4, false) 返回 160px
+// get_width(4) or get_width(4, true) 返回 150px;
+// get_width() 返回 950px;
+
+@function get_width($columns: $_columns, $onlyInnerWidth: true, $_subtract: 0)
+{
+    // 设置一个默认返回值
+    $return: ($_column-width + $_gutter) * $columns - $_subtract !default;
+
+    // 得到列的内部宽度
+    @if $onlyInnerWidth == true
+    {
+        // 返回计算出的总宽度，没有margins
+        $return: ($_column-width + $_gutter) * $columns - $_gutter - $_subtract;
+    }
+
+    @return $return;
+}
+
+// 清除浮动混合
+@mixin clearfix{
+    *zoom: 1;
+    &:before,
+    &:after{
+        content: "";
+        display: table;
+        line-height: 0;
+    }
+    &:after{
+        clear: both;
+    }
+}
+
+
+// Column Mixin:
+// We're defining the default values as follows:
+// Default Column Count: Max Column Count
+// Padding (explained below): 0
+// Margin is the gutter width, but can be overridden
+@mixin column($columns: $_columns, $_subtract: 0, $_offset: false, $gutter: $_gutter)
+{
+    // Default Properties for a column:
+
+    float: left;
+    _display: inline;
+    $getWidth: get_width($columns, true, $_subtract); // Use the width calculation function to get the width
+
+    @if $gutter != 0
+    {
+        // Check for Alpha (a, first, f);
+        @if $_offset == alpha {
+          margin-left: -($gutter / 2);margin-right: $gutter / 2;
+        }
+        @else if $_offset == a {
+          margin-right: ($gutter / 2);margin-left: 0;
+        }
+        @else if $_offset == first {
+          margin-right: ($gutter / 2);margin-left: 0;
+        }
+        @else if $_offset == f {
+          margin-right: ($gutter / 2);margin-left: 0;
+        }
+
+        // Check for Omega (o, l, last);
+        @else if $_offset == omega {
+          margin-right: -($gutter / 2);margin-left:$gutter / 2;
+        }
+        @else if $_offset == o {
+          margin-left: ($gutter / 2);margin-right: 0;
+        }
+        @else if $_offset == last {
+          margin-left: ($gutter / 2);margin-right: 0;
+        }
+        @else if $_offset == l {
+          margin-left: ($gutter / 2);margin-right: 0;
+        }
+        // No Margins
+        @else if $_offset == full {
+          $getWidth: $getWidth + $gutter;
+        }
+        @else if $_offset == none {
+          $getWidth: $getWidth + $gutter;
+        }
+
+        @else {
+            margin-right: $gutter;
+        }
+    }
+
+    width: $getWidth;
+}
+
+// wrapper 定义最外层宽度
+// So wrapper( column count, center ?, subtract)
+@mixin wrapper($columns: $_columns, $center: true, $_subtract: 0)
+{
+    // Because this is a wrapper, we don't need the outer gutter - we need the full width
+    $getWrapperWidth: get_width($columns, false);
+    // In case there is a need to subtract the wrapper
+    $wrapperWidth: $getWrapperWidth - $_subtract;
+    width: $wrapperWidth;
+
+    // 默认居中
+    @if $center == true
+    {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    // 添加清除浮动定义
+    @include clearfix;
+
+    //
+    padding-left: $_gutter;
+
+}
+
+
+
+// To be able to use columns inside another element,
+// You need to set that element to be a container (of how many columns)
+// So: @include container(x_number_of_columns)
+@mixin container($columns: $_columns, $_subtract: 0)
+{
+    float: left;
+    _display: inline;
+    $getWidth: get_width($columns, false); // Use the width calculation function to get
+    $columnWidth: $getWidth - $_subtract;
+    width: $columnWidth;
+}
+// Container Alias
+@mixin fullwidth($columns: $_columns, $_subtract: 0) {
+    @include container($columns, $_subtract)
+}
+
+@mixin alpha {
+    margin-left: 0;
+}
+
+@mixin omega {
+    margin-right: 0;
+}
+
+
+// @import "grid";
+// $_columns: 33;
+// $_column-width: 20px;
+// $_gutter: 10px;
+
+// .wrapper {
+// 	@include wrapper;
+// }
+// .content {
+// 	@include column(5);
+// }
+// .sidebar {
+// 	@include column(15);
+// }

@@ -1,0 +1,24 @@
+@charset "utf-8";
+//
+// 配置参数
+// $Author: linzhiqiang $
+// $Date: 2013-11-15 14:45:31 +0800 (周五, 2013-11-15) $
+//
+// Base Color
+$base-color            : #333 !default;
+$base-background-color : #fff !default;
+$base-link-color       : #333 #F40 !default;
+$base-link-color-hover : #F40 !default;
+
+// Base Content
+$base-font-size          : 12px !default;
+$base-line-height        : 1.5 !default;
+$base-font-family        : Tahoma, sans-serif !default;
+$base-header-font-family : "Microsoft YaHei" !default;
+
+// Base Borders & Box Shadows
+$base-border        : 1px solid $base-color !default;
+$base-border-radius : 3px !default;
+$base-box-shadow    : 0 1px 2px rgba($base-color,.25) !default;
+
+// Colors

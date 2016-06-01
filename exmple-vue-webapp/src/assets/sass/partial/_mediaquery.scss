@@ -1,0 +1,144 @@
+@charset "utf-8";
+//
+// Media Query
+// http://nmsdvid.com/snippets/
+// http://css-tricks.com/snippets/css/retina-display-media-query/
+// $Author: linzhiqiang $
+// $Date: 2013-11-15 14:45:31 +0800 (周五, 2013-11-15) $
+//
+// 320px
+$_320px: "screen and (max-width: 320px)";
+
+// 640px
+$_640px: "screen and (max-width: 640px)";
+
+// 1024px
+$_1024px: "screen and (max-width: 1024px)";
+
+// iPhone
+$iphone: "screen and (device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)";
+
+// iPhone 4
+$iphone4: "only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5)";
+
+// iPhone 5
+$iphone5: "screen and (device-aspect-ratio: 40/71)";
+
+// iPad Landscape
+$ipad: "(max-device-width: 1024px) and (orientation: landscape)";
+
+// iPad Portrait
+$ipad: "(max-device-width: 768px) and (orientation: portrait)";
+
+// iPad 4
+$ipad4: "screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)";
+
+// iPad Mini
+$ipadmini: "screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1)";
+
+// Retina
+$retina: "only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)";
+
+@mixin media($type) {
+
+    @if $type == iphone {
+        @media #{$iphone} {
+            @content;
+        }
+    }
+
+    @else if $type == iphone4 {
+        @media #{$iphone4} {
+            @content;
+        }
+    }
+
+    @else if $type == iphone5 {
+        @media #{$iphone5} {
+            @content;
+        }
+    }
+
+    @else if $type == retina {
+        @media #{$retina} {
+            @content;
+        }
+    }
+
+}
+
+
+// $media: "screen";
+// $feature: "max-width";
+// $value: 720px;
+// $value2: 320px;
+
+// @mixin modular-mq($breakpoint) {
+//   @if $breakpoint == medium {
+//     @media (#{$media} and #{$feature}: $value) { @content; }
+//   }
+//   @else if $breakpoint == small {
+//     @media (#{$media} and #{$feature}: $value2) { @content; }
+//   }
+// }
+
+// .box-module {
+//   float: left;
+//   background: #ccc;
+//   margin-bottom: 1.2em;
+
+//   @include modular-mq(medium) {
+//     float: none;
+//     clear: both;
+//     margin-bottom: .5em;
+//   }
+
+//   @include modular-mq(small) {
+//     margin-bottom: .2em;
+//   }
+
+// }
+
+// .some-other-module {
+//   border: solid 4px #222;
+//   padding: 1.2em;
+//   margin-bottom: 1.2em;
+
+//   @include modular-mq(medium) {
+//     border: solid 2px #222;
+//     padding: .8em;
+//     margin-bottom: .5em;
+//   }
+
+//   @include modular-mq(small) {
+//     padding: .2em;
+//     margin-bottom: .2em;
+//   }
+// }
+
+// https://gist.github.com/ffdead/4215169
+@mixin if-min-resolution($dppx) {
+  @include if-resolution(min, $dppx) {
+    @content;
+  }
+}
+
+@mixin if-max-resolution($dppx) {
+  @include if-resolution(max, $dppx) {
+    @content;
+  }
+}
+
+@mixin if-resolution($prefix, $dppx) {
+  // 1px = 96dpi
+  $dpi: $dppx * 96;
+  @media
+    (-webkit-#{$prefix}-device-pixel-ratio: #{$dppx}),
+    (   #{$prefix}--moz-device-pixel-ratio: #{$dppx}),
+    (     -o-#{$prefix}-device-pixel-ratio: #{$dppx*2}/2),
+    (        #{$prefix}-device-pixel-ratio: #{$dppx}),
+    (                #{$prefix}-resolution: #{$dpi}dpi),
+    (                #{$prefix}-resolution: #{$dppx}dppx) {
+      @content;
+  }
+}

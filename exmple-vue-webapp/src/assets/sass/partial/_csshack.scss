@@ -1,0 +1,83 @@
+@charset "utf-8";
+//
+// Browser Hacks
+// http://browserhacks.com
+// $Author: linzhiqiang $
+// $Date: 2013-11-15 14:45:31 +0800 (周五, 2013-11-15) $
+//
+// Chrome
+$ch: "@media screen and (-webkit-min-device-pixel-ratio:0)";
+
+// Safari
+$sa: "";
+
+// Friefox 4+
+$fx: "screen and (min--moz-device-pixel-ratio:0)";
+
+// Opera
+$op: "";
+
+// Internet Explorer
+$ie6: "* html";
+$ie7: "*+html";
+$ie8: "\0screen";
+$ie9: "screen and (min-width:0\0)";
+$ie910: "screen and (min-width:0\0)";
+$ie10: "screen and (-ms-high-contrast: active), (-ms-high-contrast: none)";
+
+$ie67: "@media screen\9";
+$ie678: "@media \0screen\,screen\9";
+$ie8910: "@media screen\0";
+
+@mixin hack($type) {
+
+    @if $type == ie6 {
+
+        #{$ie6} & {
+            @content;
+        }
+
+    }
+    @else if $type == ie7 {
+
+        #{$ie7} & {
+            @content;
+        }
+
+    }
+    @else if $type == ie8 {
+
+        @media #{$ie8} {
+            @content;
+        }
+
+    }
+    @else if $type == ie9 {
+
+       @media #{$ie9} {
+            @content;
+        }
+
+    }
+    @else if $type == ie10 {
+
+        @media #{$ie10} {
+            @content;
+        }
+
+    }
+    @else if $type == fx {
+
+       @media #{$fx} {
+            @content;
+        }
+
+    }
+    @else if $type == ch {
+
+        #{$ch} {
+            @content;
+        }
+
+    }
+}

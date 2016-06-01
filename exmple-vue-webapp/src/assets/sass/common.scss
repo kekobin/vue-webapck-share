@@ -1,0 +1,36 @@
+@charset "UTF-8";
+$base-font-size: 23.4375px;
+
+@function pxToRem($px) {
+  @return $px / $base-font-size /2 * 1rem;
+}
+@mixin bg($url) {
+  background:url($url) center no-repeat;
+  background-size: 100% 100%;
+}
+
+@mixin wh($width, $height, $hasLineHeight) {
+  width: pxToRem($width);
+  height: pxToRem($height);
+
+  @if $hasLineHeight == true {
+    line-height: pxToRem($height);
+  }
+}
+@mixin colorFont($color, $fontSize) {
+  color:$color;
+  font-size: pxToRem($fontSize);
+}
+
+@import "partial/normalize";
+@import "partial/base";
+@import "partial/func";
+
+html,body {
+    position: relative;
+    font-family: "微软雅黑", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    margin: 0;
+    padding: 0;
+    height:100%;
+    background-color:#f1f1f1;
+}
