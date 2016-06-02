@@ -39,15 +39,22 @@
       box-sizing: border-box;
       height: 45px;
       line-height: 45px;
-      background:#000;
+      background:#1D1A1A;
       color:#f2f2f2;
 
       .h-left,.h-right{
         position: absolute;
         top:0;
-        z-index: 100;
-        width: 60px;
+        width: 61px;
         text-align: center;
+        font-size: 20px;
+        z-index:100;
+        i{
+          vertical-align: -1px;
+        }
+        a{
+          color:#fdfdfd;
+        }
       }
 
       .h-left{

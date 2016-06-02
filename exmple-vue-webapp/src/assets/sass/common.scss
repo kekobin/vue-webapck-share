@@ -40,6 +40,7 @@ a{
 #app{
   height: 100%;
   margin: 0 auto;
+  overflow: hidden;
 }
 .v{
   min-height:calc(100vh - 50px);
@@ -63,9 +64,9 @@ a{
 }
 
 
-::-webkit-scrollbar {
-  display: none;
-}
+// ::-webkit-scrollbar {
+//   display: none;
+// }
 
 /*场景切换*/
 .next-enter {

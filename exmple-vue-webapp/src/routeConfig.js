@@ -49,7 +49,11 @@ export function configRouter(router) {
       }, 150);
       // return;
     } else {
-      router.app.effect = 'next'; //前进
+      if(containsInPageList(transition.to.name)) {
+        router.app.effect = 'normal';
+      } else {
+        router.app.effect = 'next'; //前进
+      }
       
       routeList.push({
         name: transition.to.name,

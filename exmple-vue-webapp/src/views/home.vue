@@ -3,12 +3,30 @@
     <appheader title="微信"></appheader>
     <section class="content">
       <ul class="msg-list">
-        <li v-link="{path: '/home/homeDetail/111'}">
+        <li v-link="{path: '/home/homeDetail/1'}">
           <a>
             <img src="../assets/img/avatar.png">
             <div class="more">
               <h3>虎牙屌丝</h3>
               <p>页面切割机:撸一撸</p>
+            </div>
+          </a>
+        </li>
+        <li v-link="{path: '/home/homeDetail/2'}">
+          <a>
+            <img src="../assets/img/avatar1.png">
+            <div class="more">
+              <h3>开车-老司机</h3>
+              <p>页面切割机:我是</p>
+            </div>
+          </a>
+        </li>
+        <li v-link="{path: '/home/homeDetail/3'}">
+          <a>
+            <img src="../assets/img/avatar2.png">
+            <div class="more">
+              <h3>前端官方群</h3>
+              <p>感谢TX:丢雷</p>
             </div>
           </a>
         </li>
@@ -65,7 +83,7 @@ export default {
       margin-left:15px;
       h3{
         font-size:14px;
-        padding-bottom:3px;
+        padding-bottom:1px;
       }
       p{
         font-size:12px;

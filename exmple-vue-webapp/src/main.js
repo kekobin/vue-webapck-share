@@ -4,9 +4,11 @@ require('assets/sass/common.scss');
 import Vue from 'vue';
 import VueRouter from "vue-router";
 import VueResource from 'vue-resource';
+import infiniteScroll from 'vue-infinite-scroll';
 import { configRouter } from './routeConfig';
 import AppVue from "./App.vue";
 
+Vue.use(infiniteScroll);
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
@@ -65,3 +67,5 @@ const App = Vue.extend(AppVue);
 
 // boostrap the app
 router.start(App, "#app");
+
+
