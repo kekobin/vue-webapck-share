@@ -1,3 +1,4 @@
+require('assets/font-awesome/css/font-awesome.min.css');
 require('assets/sass/common.scss');
 
 import Vue from 'vue';
@@ -9,7 +10,7 @@ import AppVue from "./App.vue";
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
-Vue.config.devtools = true
+Vue.config.devtools = true;
 
 function preventDefault(e) { e.preventDefault(); }; 
 const banTouchmove = function(){
