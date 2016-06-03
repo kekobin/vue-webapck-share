@@ -65,7 +65,7 @@ export function configRouter(router) {
     }
 
     setTimeout(function() {
-      //这里加上延迟是要在afterEach之后在执行
+      //这里加上延迟是要在afterEach之后在执行,否则切换有问题(原因还没找到 )
       transition.next();
     }, 150);
   });
