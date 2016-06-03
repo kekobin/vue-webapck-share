@@ -7,12 +7,15 @@ import VueResource from 'vue-resource';
 import infiniteScroll from 'vue-infinite-scroll';
 import { configRouter } from './routeConfig';
 import AppVue from "./App.vue";
+import FastClick from 'fastclick';
 
 Vue.use(infiniteScroll);
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
 Vue.config.devtools = true;
+
+FastClick.attach(document.body);
 
 function preventDefault(e) { e.preventDefault(); }; 
 const banTouchmove = function(){

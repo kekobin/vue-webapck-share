@@ -1,5 +1,3 @@
-import FastClick from 'fastclick';
-
 export function configRouter(router) {
   router.map({
     "/": {//首页
@@ -31,8 +29,6 @@ export function configRouter(router) {
   window.prevPage = 'home';
 
   router.beforeEach(transition => {
-    FastClick.attach(document.body);
-
     window.scrollTo(0, 0);
 
     if (routeList.length > 1 && transition.to.name == routeList[routeList.length - 2]['name']) {
@@ -43,11 +39,6 @@ export function configRouter(router) {
       }
 
       routeList.splice(routeList.length - 1, 1);
-      setTimeout(function() {
-        //这里加上延迟是要在afterEach之后在执行
-        transition.next();
-      }, 150);
-      // return;
     } else {
       if(containsInPageList(transition.to.name)) {
         router.app.effect = 'normal';
@@ -62,10 +53,7 @@ export function configRouter(router) {
         params: transition.to.params,
         timer: +new Date
       });
-
-      transition.next();
     }
-
 
     //使底部菜单栏在一级路由切换时一直保持显示
     //在二级页时隐藏
@@ -75,6 +63,11 @@ export function configRouter(router) {
     } else {
       router.app.isIndex = true;
     }
+
+    setTimeout(function() {
+      //这里加上延迟是要在afterEach之后在执行
+      transition.next();
+    }, 150);
   });
 
   //可以记录访问路径
