@@ -55,6 +55,9 @@ export default {
 </script>
 
 <style lang="scss">
+  .homepage{
+    background: #FDFDFD!important;
+  }
   .msg-list{
     padding-left:10px;
     li{

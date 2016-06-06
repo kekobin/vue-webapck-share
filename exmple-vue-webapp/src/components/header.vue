@@ -45,9 +45,9 @@
       .h-left,.h-right{
         position: absolute;
         top:0;
-        width: 61px;
+        width: 82px;
         text-align: center;
-        font-size: 20px;
+        font-size: 15px;
         z-index:100;
         i{
           vertical-align: -1px;
@@ -70,7 +70,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        padding:0 10px;
+        padding:0 5px;
         text-align: center;
         font-size: 18px;
         overflow: hidden;

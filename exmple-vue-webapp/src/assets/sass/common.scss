@@ -37,14 +37,17 @@ html,body {
 a{
   text-decoration:none;
 }
+input{
+  outline:none;
+}
 #app{
   height: 100%;
   margin: 0 auto;
   overflow: hidden;
 }
 .v{
-  min-height:calc(100vh - 50px);
-  background: #fdfdfd;
+  min-height:100%;
+  background: #F5F4F4;
 }
 
 .wrap{
@@ -198,4 +201,8 @@ a{
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
   }
+}
+
+.fr{
+  float:right;
 }
